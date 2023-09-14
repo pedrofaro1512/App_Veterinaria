@@ -1,30 +1,49 @@
 import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 
-const Paciente = ({ item, setModalVisible, pacienteEditar }) => {
+const Paciente = ({
+  item,
+  setModalVisible,
+  pacienteEditar,
+  pacienteEliminar,
+  setModalPaciente,
+  setPaciente,
+}) => {
   const { paciente, dueño, id } = item;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Paciente</Text>
-      <Text style={styles.texto}>{paciente}</Text>
-      <Text style={styles.dueño}>{dueño}</Text>
+    <Pressable
+      onLongPress={() => {
+        setModalPaciente(true);
+        setPaciente(item);
+      }}
+    >
+      <View style={styles.container}>
+        <Text style={styles.label}>Paciente</Text>
+        <Text style={styles.texto}>{paciente}</Text>
+        <Text style={styles.dueño}>{dueño}</Text>
 
-      <View style={styles.containerButtons}>
-        <Pressable
-          style={[styles.btn, styles.btnEditar]}
-          onPress={() => {
-            setModalVisible(true);
-            pacienteEditar(id);
-          }}
-        >
-          <Text style={styles.btnText}>Editar</Text>
-        </Pressable>
-        <Pressable style={[styles.btn, styles.btnEliminar]}>
-          <Text style={styles.btnText}>Eliminar</Text>
-        </Pressable>
+        <View style={styles.containerButtons}>
+          <Pressable
+            style={[styles.btn, styles.btnEditar]}
+            onPress={() => {
+              setModalVisible(true);
+              pacienteEditar(id);
+            }}
+          >
+            <Text style={styles.btnText}>Editar</Text>
+          </Pressable>
+          <Pressable
+            style={[styles.btn, styles.btnEliminar]}
+            onPress={() => {
+              pacienteEliminar(id);
+            }}
+          >
+            <Text style={styles.btnText}>Eliminar</Text>
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

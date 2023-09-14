@@ -1,17 +1,50 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  FlatList,
+  Alert,
+  Modal,
+} from "react-native";
 import Formulario from "./src/components/Formulario";
 import Paciente from "./src/components/Paciente";
+import InfoPaciente from "./src/components/InfoPaciente";
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalPaciente, setModalPaciente] = useState(false);
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
 
   const pacienteEditar = (id) => {
     const pacienteEditar = pacientes.filter((paciente) => paciente.id === id);
     setPaciente(pacienteEditar[0]);
+  };
+
+  const pacienteEliminar = (id) => {
+    Alert.alert(
+      "Deseas eliminar este paciente?",
+      "Este paciente no se podra recuperar",
+      [
+        { text: "Cancelar" },
+        {
+          text: "Confirmar",
+          onPress: () => {
+            const pacientesActualizados = pacientes.filter(
+              (pacientesState) => pacientesState.id !== id
+            );
+            setPacientes(pacientesActualizados);
+          },
+        },
+      ]
+    );
+  };
+
+  const cerraModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -40,21 +73,33 @@ const App = () => {
               <Paciente
                 item={item}
                 setModalVisible={setModalVisible}
+                setPaciente={setPaciente}
                 pacienteEditar={pacienteEditar}
+                pacienteEliminar={pacienteEliminar}
+                setModalPaciente={setModalPaciente}
               />
             );
           }}
         />
       )}
 
-      <Formulario
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        setPacientes={setPacientes}
-        pacientes={pacientes}
-        paciente={paciente}
-        setPaciente={setPaciente}
-      />
+      {modalVisible && (
+        <Formulario
+          cerraModal={cerraModal}
+          setPacientes={setPacientes}
+          pacientes={pacientes}
+          paciente={paciente}
+          setPaciente={setPaciente}
+        />
+      )}
+
+      <Modal visible={modalPaciente} animationType="fade">
+        <InfoPaciente
+          paciente={paciente}
+          setModalPaciente={setModalPaciente}
+          setPaciente={setPaciente}
+        />
+      </Modal>
 
       <StatusBar style="auto" />
     </View>
