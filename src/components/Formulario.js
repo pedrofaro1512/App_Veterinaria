@@ -12,8 +12,7 @@ import {
 
 const Formulario = (props) => {
   const {
-    modalVisible,
-    setModalVisible,
+    cerraModal,
     setPacientes,
     pacientes,
     paciente: pacienteObj,
@@ -68,7 +67,7 @@ const Formulario = (props) => {
       setPacientes([...pacientes, nuevoPaciente]);
     }
 
-    setModalVisible(!modalVisible);
+    cerraModal();
 
     setId("");
     setPaciente("");
@@ -79,7 +78,7 @@ const Formulario = (props) => {
   };
 
   return (
-    <Modal animationType="slide" visible={modalVisible}>
+    <Modal animationType="slide">
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.titulo}>
@@ -89,7 +88,7 @@ const Formulario = (props) => {
 
           <Pressable
             onPress={() => {
-              setModalVisible(!modalVisible);
+              cerraModal();
               setPacienteApp({});
               setId("");
               setPaciente("");
