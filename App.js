@@ -36,7 +36,6 @@ const App = () => {
           data={pacientes}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
-            console.log(item);
             return (
               <Paciente
                 item={item}
@@ -53,6 +52,8 @@ const App = () => {
         setModalVisible={setModalVisible}
         setPacientes={setPacientes}
         pacientes={pacientes}
+        paciente={paciente}
+        setPaciente={setPaciente}
       />
 
       <StatusBar style="auto" />

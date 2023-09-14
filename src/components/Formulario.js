@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,13 +11,32 @@ import {
 } from "react-native";
 
 const Formulario = (props) => {
-  const { modalVisible, setModalVisible, setPacientes, pacientes } = props;
+  const {
+    modalVisible,
+    setModalVisible,
+    setPacientes,
+    pacientes,
+    paciente: pacienteObj,
+    setPaciente: setPacienteApp,
+  } = props;
 
   const [paciente, setPaciente] = useState("");
+  const [id, setId] = useState("");
   const [dueño, setdueño] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
   const [sintomas, setSintomas] = useState("");
+
+  useEffect(() => {
+    if (pacienteObj.paciente) {
+      setPaciente(pacienteObj.paciente);
+      setId(pacienteObj.id);
+      setdueño(pacienteObj.dueño);
+      setEmail(pacienteObj.email);
+      setTelefono(pacienteObj.telefono);
+      setSintomas(pacienteObj.sintomas);
+    }
+  }, [pacienteObj]);
 
   const handleCita = () => {
     //Validaciones
@@ -27,16 +46,31 @@ const Formulario = (props) => {
     }
 
     const nuevoPaciente = {
-      id: Date.now(),
       paciente,
       dueño,
       email,
       telefono,
       sintomas,
     };
-    setPacientes([...pacientes, nuevoPaciente]);
+
+    // Verificación si es un nuevo registro o edición
+    if (id) {
+      //Edición
+      nuevoPaciente.id = id;
+      const pacientesModificados = pacientes.map((pacienteState) =>
+        pacienteState.id === nuevoPaciente.id ? nuevoPaciente : pacienteState
+      );
+      setPacientes(pacientesModificados);
+      setPacienteApp({});
+    } else {
+      //Nuevo registro
+      nuevoPaciente.id = Date.now();
+      setPacientes([...pacientes, nuevoPaciente]);
+    }
+
     setModalVisible(!modalVisible);
 
+    setId("");
     setPaciente("");
     setdueño("");
     setEmail("");
@@ -49,12 +83,21 @@ const Formulario = (props) => {
       <View style={styles.container}>
         <ScrollView>
           <Text style={styles.titulo}>
-            Nueva {""}
+            {pacienteObj.id ? "Editar" : "Nueva"} {""}
             <Text style={styles.tituloBold}>Cita</Text>
           </Text>
 
           <Pressable
-            onPress={() => setModalVisible(!modalVisible)}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+              setPacienteApp({});
+              setId("");
+              setPaciente("");
+              setdueño("");
+              setEmail("");
+              setTelefono("");
+              setSintomas("");
+            }}
             style={styles.btnCerrar}
           >
             <Text style={styles.btnCerrarTexto}>Cerrar</Text>
@@ -118,7 +161,9 @@ const Formulario = (props) => {
           </View>
 
           <Pressable style={styles.btnNuevaCita} onPress={handleCita}>
-            <Text style={styles.btnNuevaCitaTexto}>Agregar paciente</Text>
+            <Text style={styles.btnNuevaCitaTexto}>
+              {pacienteObj.id ? "Editar" : "Agregar"} Paciente
+            </Text>
           </Pressable>
         </ScrollView>
       </View>
