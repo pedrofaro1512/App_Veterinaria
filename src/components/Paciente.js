@@ -55,19 +55,19 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
   },
   label: {
-    color: "#374151",
+    color: "#252F48",
     textTransform: "uppercase",
     fontWeight: "700",
     marginBottom: 8,
   },
   texto: {
-    color: "#6D28D9",
+    color: "#1BBCB6",
     fontSize: 20,
     fontWeight: "700",
     marginBottom: 8,
   },
   dueño: {
-    color: "#374151",
+    color: "#252F48",
   },
   containerButtons: {
     flexDirection: "row",
@@ -80,16 +80,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   btnEditar: {
-    backgroundColor: "orange",
+    backgroundColor: "#A9C3B8",
   },
   btnEliminar: {
-    backgroundColor: "red",
+    backgroundColor: "#D16D79",
   },
   btnText: {
     textTransform: "uppercase",
-    fontWeight: "700",
-    color: "#FFF",
-    fontSize: 12,
+    fontWeight: "800",
+    color: "#252F48",
+    fontSize: 13,
   },
 });
 

@@ -53,7 +53,7 @@ const InfoPaciente = ({ paciente, setPaciente, setModalPaciente }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F59E0B",
+    backgroundColor: "#D16D79",
     flex: 1,
   },
   titulo: {
@@ -61,22 +61,22 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     marginTop: 30,
-    color: "#FFF",
+    color: "#252F48",
   },
   tituloBold: {
     fontWeight: "900",
   },
   btnCerrar: {
     marginVertical: 20,
-    backgroundColor: "#E06900",
+    backgroundColor: "#A9C3B8",
     marginHorizontal: 30,
     padding: 10,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#FFF",
+    borderColor: "#1BBCB6",
   },
   btnCerrarTexto: {
-    color: "#FFF",
+    color: "#252F48",
     textAlign: "center",
     fontSize: 20,
     fontWeight: "900",

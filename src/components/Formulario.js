@@ -172,7 +172,7 @@ const Formulario = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#6D22D9",
+    backgroundColor: "#A9C3B8",
     flex: 1,
   },
   titulo: {
@@ -180,22 +180,22 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     marginTop: 30,
-    color: "#FFF",
+    color: "#252F48",
   },
   tituloBold: {
     fontWeight: "900",
   },
   btnCerrar: {
     marginVertical: 20,
-    backgroundColor: "#5827A4",
+    backgroundColor: "#D16D79",
     marginHorizontal: 30,
     padding: 10,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#FFF",
+    borderColor: "#1BBCB6",
   },
   btnCerrarTexto: {
-    color: "#FFF",
+    color: "#252F48",
     textAlign: "center",
     fontSize: 20,
     fontWeight: "900",
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   label: {
-    color: "#FFF",
+    color: "#252F48",
     marginBottom: 10,
     marginTop: 10,
     fontSize: 20,
@@ -223,14 +223,16 @@ const styles = StyleSheet.create({
   },
   btnNuevaCita: {
     marginVertical: 30,
-    backgroundColor: "#F59E0B",
+    backgroundColor: "#1BBCB6",
     paddingVertical: 15,
     marginHorizontal: 39,
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#1BBCB6",
   },
   btnNuevaCitaTexto: {
     textAlign: "center",
-    color: "#5827A4",
+    color: "#252F48",
     textTransform: "uppercase",
     fontWeight: "900",
     fontSize: 20,
