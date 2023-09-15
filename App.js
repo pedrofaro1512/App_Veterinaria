@@ -108,30 +108,30 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F3F4F5",
+    backgroundColor: "#EDEDEF",
     flex: 1,
   },
   titulo: {
     textAlign: "center",
     fontSize: 33,
-    color: "#374151",
+    color: "#252F48",
     fontWeight: "600",
     paddingVertical: 30,
     paddingHorizontal: 30,
   },
   tituloBold: {
     fontWeight: "900",
-    color: "#6D28D9",
+    color: "#1BBCB6",
   },
   btnNuevaCita: {
-    backgroundColor: "#6d28d9",
+    backgroundColor: "#A9C3B8",
     padding: 10,
     marginHorizontal: 30,
     borderRadius: 10,
   },
   btnTextNuevaCita: {
     textAlign: "center",
-    color: "#FFF",
+    color: "#252F48",
     fontSize: 20,
     fontWeight: "900",
     textTransform: "uppercase",
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 24,
     fontWeight: "600",
+    color: "#252F48",
   },
   listado: {
     marginTop: 40,
